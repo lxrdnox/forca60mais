@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2f5a43">
+<title>Força 60+ | Musculação, saúde e autonomia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<div id="anuncio" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+<header><div class="hin">
+ <div class="brand">Força 60+<small>Musculação, saúde e autonomia · ODS 3</small></div>
+ <div class="tools" role="group" aria-label="Ajustes de leitura">
+  <button type="button" onclick="fonte(-10)" aria-label="Diminuir letras">A−</button>
+  <button type="button" onclick="fonte(10)" aria-label="Aumentar letras">A+</button>
+  <button type="button" id="ouvir" aria-pressed="false" onclick="ouvir()">🔊 Ouvir página</button>
+  <button type="button" id="tm" aria-pressed="false" onclick="tema()">🌙 Modo escuro</button>
+  <button type="button" id="ctr" aria-pressed="false" onclick="contraste()">Alto contraste</button>
+ </div>
+</div></header>
+<main id="conteudo" tabindex="-1">
+
+<section class="screen on" id="inicio" aria-labelledby="t-inicio">
+ <div class="hero">
+  <div>
+   <p id="saud" style="font-weight:700;color:var(--acc,var(--g8));margin-bottom:.4rem" aria-live="polite"></p>
+   <h1 id="t-inicio">Força nas pernas hoje, liberdade amanhã.</h1>
+   <p class="mut" style="font-size:1.25rem">Levantar da cadeira, subir uma escada, carregar as compras. A musculação, com orientação, ajuda a manter essas tarefas fáceis depois dos 60.</p>
+   <div class="row"><button class="btn" onclick="ir('seguranca')">Começar pela triagem de segurança</button><button class="btn sec" onclick="ir('exercicios')">Ver exercícios</button></div>
+  </div>
+  <div class="big"><b>2×</b><span>por semana: é o mínimo que a OMS recomenda para fortalecer os músculos de pessoas com 65 anos ou mais.</span></div>
+ </div>
+ <h2>Por que treinar força?</h2>
+ <div class="grid">
+  <div class="card"><h3>Músculos perdem massa com a idade</h3><p>Sem estímulo, a força diminui gradualmente. O treino de resistência é a forma mais estudada de frear essa perda.</p></div>
+  <div class="card"><h3>Menos risco de quedas</h3><p>Pernas e quadris mais fortes, junto com treino de equilíbrio, ajudam na prevenção de quedas.</p></div>
+  <div class="card"><h3>Ossos e articulações</h3><p>O esforço muscular estimula os ossos e dá suporte às articulações, sempre com carga adequada.</p></div>
+  <div class="card"><h3>Disposição e humor</h3><p>Atividade regular está associada a melhor sono, bem-estar e convívio social.</p></div>
+ </div>
+ <div class="card" style="margin-top:1rem"><h3>Feito para todos</h3><p>Este site funciona com leitores de tela (NVDA, JAWS, VoiceOver, TalkBack), com teclado (Tab, Enter e Espaço) e tem o botão “Ouvir página”, que lê a tela atual em voz alta. Também é possível aumentar as letras e ativar o alto contraste.</p></div>
+ <div class="notice"><strong>Importante:</strong> este site é um material educativo de um projeto acadêmico. Ele não substitui avaliação médica nem prescrição de um profissional de educação física.</div>
+</section>
+
+<section class="screen" id="seguranca" aria-labelledby="t-seg">
+ <h2 id="t-seg">Triagem de segurança</h2>
+ <p class="mut">Responda com sinceridade. Esta triagem é educativa, inspirada em questionários de prontidão para atividade física, e não faz diagnóstico.</p>
+ <form id="triagem" onsubmit="return false"></form>
+ <div class="row"><button class="btn" onclick="triar()">Ver resultado</button><button class="btn sec" onclick="window.print()">Imprimir ou salvar em PDF</button><button class="btn sec" onclick="document.getElementById('triagem').reset();document.getElementById('res').hidden=true">Limpar respostas</button></div>
+ <div id="res" class="result" hidden aria-live="polite" tabindex="-1"></div>
+ <div class="alert" role="note"><strong>Pare e procure ajuda se sentir:</strong>
+  <ul><li>dor ou aperto no peito (em caso de dor forte, ligue 192, SAMU);</li><li>falta de ar fora do normal, tontura ou suor frio;</li><li>batimentos muito irregulares ou dor aguda em uma articulação.</li></ul></div>
+ <div class="card"><h3>Teste da conversa</h3><p>Durante o exercício você deve conseguir falar frases curtas. Se não consegue falar, o esforço está alto demais: reduza e converse com seu profissional.</p></div>
+</section>
+
+<section class="screen" id="exercicios" aria-labelledby="t-ex">
+ <h2 id="t-ex">Movimentos para conhecer</h2>
+ <p class="mut">Exemplos educativos por região do corpo. Carga, repetições e frequência devem ser definidas por profissional.</p>
+ <div class="card" id="cron" style="margin-bottom:1rem"><h3>Cronômetro de descanso</h3><p>Descanse entre as séries. Ao terminar, você ouve um aviso e o celular vibra.</p>
+  <div class="feel" role="group" aria-label="Tempo de descanso"><button class="btn sec" onclick="cron(30)">30 segundos</button><button class="btn sec" onclick="cron(60)">1 minuto</button><button class="btn sec" onclick="cron(90)">1min30</button><button class="btn sec" onclick="cron(0)">Parar</button></div>
+  <div class="stat" id="crono" role="timer" aria-live="off">0:00</div></div>
+ <div class="filters" role="group" aria-label="Filtrar por região" id="filtros"></div>
+ <div id="lista"></div>
+ <div class="notice"><strong>Não é ficha de treino.</strong> A escolha dos movimentos depende da saúde, da mobilidade e dos objetivos de cada pessoa.</div>
+</section>
+
+<section class="screen" id="aprender" aria-labelledby="t-ap">
+ <h2 id="t-ap">Mitos e verdades</h2>
+ <div id="mitos"></div>
+ <h2 style="margin-top:2rem">Referências</h2>
+ <div class="card"><p>Organização Mundial da Saúde. <em>Diretrizes da OMS sobre atividade física e comportamento sedentário</em>, 2020.<br><br>Chodzko-Zajko W. et al. <em>ACSM Position Stand: Exercise and Physical Activity for Older Adults</em>. Medicine &amp; Science in Sports &amp; Exercise, 2009.<br><br>Brasil. Ministério da Saúde. <em>Guia de Atividade Física para a População Brasileira</em>, 2021.</p></div>
+</section>
+
+<section class="screen" id="evolucao" aria-labelledby="t-ev">
+ <h2 id="t-ev">Minha evolução</h2>
+ <p class="mut">Seus registros ficam salvos neste aparelho. Meta de referência: 2 treinos de força por semana.</p>
+ <div class="grid">
+  <div class="card"><p>Treinos nos últimos 7 dias</p><div class="stat" id="sem" aria-live="polite">0</div>
+   <div class="track" role="progressbar" aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" id="pb"><div class="fill" id="pf"></div></div><p id="pt">Registre seu primeiro treino.</p></div>
+  <div class="card"><h3>Como você se sentiu hoje?</h3>
+   <div class="feel" role="group" aria-label="Sensação no treino"><button class="btn sec" onclick="reg('Leve')">Leve</button><button class="btn sec" onclick="reg('Bom')">Bom</button><button class="btn sec" onclick="reg('Puxado')">Puxado</button></div>
+   <p>Toque para registrar o treino de hoje.</p></div>
+ </div>
+ <div class="card" style="margin-top:1rem"><h3>Últimos 7 dias</h3><div class="chart" id="graf" role="img"></div><div class="lab" id="rot"></div><p id="gres" aria-live="polite"></p></div>
+ <div class="card" style="margin-top:1rem"><h3>Histórico</h3><div id="hist"></div></div>
+</section>
+</main>
+<footer>Protótipo acadêmico · Força 60+ · ODS 3 – Saúde e Bem-Estar</footer>
+<nav class="bn" aria-label="Navegação principal">
+ <button data-s="inicio" class="on" onclick="ir('inicio')"><span aria-hidden="true">⌂</span>Início</button>
+ <button data-s="seguranca" onclick="ir('seguranca')"><span aria-hidden="true">✚</span>Segurança</button>
+ <button data-s="exercicios" onclick="ir('exercicios')"><span aria-hidden="true">🏋️</span>Exercícios</button>
+ <button data-s="aprender" onclick="ir('aprender')"><span aria-hidden="true">📖</span>Aprender</button>
+ <button data-s="evolucao" onclick="ir('evolucao')"><span aria-hidden="true">📈</span>Evolução</button>
+</nav>
+<script src="script.js" defer></script>
+</body>
+</html>
