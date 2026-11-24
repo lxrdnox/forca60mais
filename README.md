@@ -19,16 +19,6 @@ style.css    visual
 script.js    interações
 ```
 
-## Como usar
-
-Abra o `index.html` no navegador. Não precisa instalar nada.
-
-## Publicar no GitHub Pages
-
-1. Envie os arquivos para a raiz de um repositório.
-2. Em **Settings > Pages**, escolha **Deploy from a branch**, branch `main` e pasta `/ (root)`.
-3. O site fica em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
-
 ## Aviso
 
 Material educativo. Não substitui avaliação médica nem prescrição de um profissional de educação física.
